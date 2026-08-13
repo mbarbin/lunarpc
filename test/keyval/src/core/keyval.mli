@@ -3,3 +3,7 @@
 (*_  SPDX-FileCopyrightText: 2024-2026 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
+
+module Key = Key
+module Owner = Owner
+module Value = Value

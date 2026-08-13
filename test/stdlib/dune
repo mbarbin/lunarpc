@@ -1,0 +1,49 @@
+(library
+ (name lunarpc_stdlib_test)
+ (package lunarpc-tests)
+ (inline_tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc_stdlib)
+ (libraries lunarpc_stdlib)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__stdlib.md.gen)
+ (deps test__stdlib.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__stdlib.md test__stdlib.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__string_id.md.gen)
+ (deps test__string_id.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__string_id.md test__string_id.md.gen)))

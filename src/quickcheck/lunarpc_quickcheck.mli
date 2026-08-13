@@ -4,4 +4,5 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
+module Generator = Generator
 module Rpc_quickcheck = Rpc_quickcheck

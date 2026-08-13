@@ -1,0 +1,81 @@
+(library
+ (name lunarpc_rpc_test)
+ (package lunarpc-tests)
+ (inline_tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc
+  -open
+  Lunarpc_stdlib)
+ (libraries lunarpc lunarpc_stdlib)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__call.md.gen)
+ (deps test__call.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__call.md test__call.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__rpc.md.gen)
+ (deps test__rpc.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__rpc.md test__rpc.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__name.md.gen)
+ (deps test__name.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__name.md test__name.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__principal.md.gen)
+ (deps test__principal.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__principal.md test__principal.md.gen)))
