@@ -1,0 +1,32 @@
+(library
+ (name keyval_functional_test)
+ (package lunarpc-tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc_test_harness
+  -open
+  Lunarpc_client
+  -open
+  Lunarpc
+  -open
+  Lunarpc_stdlib)
+ (libraries
+  keyval
+  keyval_client
+  keyval_rpc
+  lunarpc
+  lunarpc_client
+  lunarpc_stdlib
+  lunarpc_test_harness
+  unix)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))

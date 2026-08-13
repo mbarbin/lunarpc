@@ -1,0 +1,49 @@
+(library
+ (name keyval_cli)
+ (package lunarpc-tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Pplumbing_pp_tty
+  -open
+  Pplumbing_err
+  -open
+  Pplumbing_log
+  -open
+  Pplumbing_log_cli
+  -open
+  Cmdlang
+  -open
+  Lunarpc
+  -open
+  Lunarpc_discovery
+  -open
+  Lunarpc_server
+  -open
+  Lunarpc_stdlib)
+ (libraries
+  cmdlang
+  keyval
+  keyval_client
+  keyval_rpc
+  keyval_server
+  lunarpc
+  lunarpc_discovery
+  lunarpc_server
+  lunarpc_stdlib
+  pp
+  pplumbing-err
+  pplumbing-log
+  pplumbing-log-cli
+  pplumbing-pp-tty
+  tiny_httpd
+  unix)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess no_preprocessing))

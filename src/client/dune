@@ -1,0 +1,21 @@
+(library
+ (name lunarpc_client)
+ (public_name lunarpc-client)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Pplumbing_log
+  -open
+  Lunarpc
+  -open
+  Lunarpc_stdlib)
+ (libraries curl ezcurl lunarpc lunarpc_stdlib pplumbing-log yojson)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess no_preprocessing))

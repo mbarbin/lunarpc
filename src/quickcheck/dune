@@ -1,0 +1,26 @@
+(library
+ (name lunarpc_quickcheck)
+ (public_name lunarpc-quickcheck)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc
+  -open
+  Lunarpc_stdlib)
+ (libraries
+  base
+  base_quickcheck
+  jsonschema
+  lunarpc
+  lunarpc_stdlib
+  sexplib0
+  yojson)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess no_preprocessing))

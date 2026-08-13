@@ -1,0 +1,28 @@
+(library
+ (name lunarpc_test_harness)
+ (public_name lunarpc-test-harness)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc_client
+  -open
+  Lunarpc_discovery
+  -open
+  Lunarpc_stdlib
+  -open
+  Nofunc_stdset)
+ (libraries
+  lunarpc_client
+  lunarpc_discovery
+  lunarpc_stdlib
+  nofunc-stdset
+  unix)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess no_preprocessing))

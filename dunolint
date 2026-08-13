@@ -1,0 +1,38 @@
+(lang dunolint 1.0)
+
+;; With potential exceptions everything else is instrumented
+
+(rule
+ (cond
+  (true
+   (enforce
+    (dune
+     (instrumentation
+      (backend bisect_ppx)))))))
+
+(rule
+ (cond
+  ((path
+    (glob test/**))
+   (enforce
+    (dune
+     (library
+      (and
+       (not
+        (has_field public_name))
+       (package
+        (equals lunarpc-tests)))))))))
+
+;; We do not depend on ppx in src/ libraries, nor in test/keyval/src (the
+;; keyval RPC application libraries, as opposed to their tests). Every dune
+;; file under these must declare [(preprocess no_preprocessing)].
+
+(rule
+ (cond
+  ((path
+    (or
+     (glob src/**)
+     (glob test/keyval/src/**)))
+   (enforce
+    (dune
+     (preprocess no_preprocessing))))))

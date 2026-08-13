@@ -1,0 +1,36 @@
+(library
+ (name keyval_client)
+ (package lunarpc-tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Pplumbing_pp_tty
+  -open
+  Pplumbing_err
+  -open
+  Pplumbing_log
+  -open
+  Lunarpc
+  -open
+  Lunarpc_client
+  -open
+  Lunarpc_stdlib)
+ (libraries
+  keyval
+  keyval_rpc
+  lunarpc
+  lunarpc_client
+  lunarpc_stdlib
+  pp
+  pplumbing-err
+  pplumbing-log
+  pplumbing-pp-tty)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess no_preprocessing))
