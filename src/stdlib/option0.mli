@@ -4,14 +4,9 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t = Yojson.Basic.t
+include module type of struct
+  include Stdlib.Option
+end
 
-val equal : t -> t -> bool
-val to_dyn : t -> Dyn.t
-
-(** Pretty-print [t] as standards-compliant JSON. *)
-val pretty_to_string : t -> string
-
-(** An exception raised by deserializers when they can't parse an input
-    according to its expected structure. *)
-exception Invalid_json of t * string
+val iter : 'a t -> f:('a -> unit) -> unit
+val map : 'a t -> f:('a -> 'b) -> 'b t

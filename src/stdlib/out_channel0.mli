@@ -4,14 +4,27 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t = Yojson.Basic.t
+include module type of struct
+  include Stdlib.Out_channel
+end
 
-val equal : t -> t -> bool
-val to_dyn : t -> Dyn.t
+val create
+  :  ?binary:bool
+  -> ?append:bool
+  -> ?fail_if_exists:bool
+  -> ?perm:int
+  -> string
+  -> t
 
-(** Pretty-print [t] as standards-compliant JSON. *)
-val pretty_to_string : t -> string
+val with_file
+  :  ?binary:bool
+  -> ?append:bool
+  -> ?fail_if_exists:bool
+  -> ?perm:int
+  -> string
+  -> f:(t -> 'a)
+  -> 'a
 
-(** An exception raised by deserializers when they can't parse an input
-    according to its expected structure. *)
-exception Invalid_json of t * string
+val newline : t -> unit
+val output_line : t -> string -> unit
+val write_all : string -> data:string -> unit

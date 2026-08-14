@@ -4,20 +4,6 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
-include Stdlib.ListLabels
+include Fpath_sexp0.Fsegment
 
-let filter_opt t = filter_map ~f:Fun.id t
-let map t ~f = map ~f t
-
-let dedup_and_sort t ~compare =
-  let sorted = Stdlib.ListLabels.sort ~cmp:compare t in
-  let rec dedup acc = function
-    | [] -> rev acc
-    | [ x ] -> rev (x :: acc)
-    | x :: (y :: _ as rest) ->
-      if compare x y = 0 then dedup acc rest else dedup (x :: acc) rest
-  in
-  dedup [] sorted
-;;
-
-let hd_exn = Stdlib.List.hd
+let to_dyn t = Dyn.string (to_string t)

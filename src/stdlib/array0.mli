@@ -4,14 +4,11 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t = Yojson.Basic.t
+include module type of Stdlib.ArrayLabels
 
-val equal : t -> t -> bool
-val to_dyn : t -> Dyn.t
-
-(** Pretty-print [t] as standards-compliant JSON. *)
-val pretty_to_string : t -> string
-
-(** An exception raised by deserializers when they can't parse an input
-    according to its expected structure. *)
-exception Invalid_json of t * string
+val create : len:int -> 'a -> 'a t
+val filter : 'a t -> f:('a -> bool) -> 'a t
+val filter_map : 'a t -> f:('a -> 'b option) -> 'b t
+val is_empty : 'a t -> bool
+val sort : 'a t -> compare:('a -> 'a -> int) -> unit
+val sorted_copy : 'a t -> compare:('a -> 'a -> int) -> 'a t
