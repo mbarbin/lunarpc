@@ -167,7 +167,7 @@
   (lunarpc-test-harness
    (= :version))
   (mdexp
-   (>= 0.0.1))
+   (>= 0.0.20260814))
   (nofunc-stdhtbl
    (>= 0.1.0))
   (parsexp
@@ -216,6 +216,8 @@
    (= :version))
   (lunarpc-tests
    (= :version))
+  (mdexp
+   (>= 0.0.20260814))
   (ppx_expect
    (>= v0.17))
   (ppx_js_style

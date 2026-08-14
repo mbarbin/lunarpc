@@ -20,6 +20,7 @@ depends: [
   "lunarpc-stdlib" {= version}
   "lunarpc-test-harness" {= version}
   "lunarpc-tests" {= version}
+  "mdexp" {>= "0.0.20260814"}
   "ppx_expect" {>= "v0.17"}
   "ppx_js_style" {>= "v0.17"}
   "ppxlib" {>= "0.33"}

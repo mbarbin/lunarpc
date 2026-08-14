@@ -1,0 +1,188 @@
+(library
+ (name keyval_rpc_test)
+ (package lunarpc-tests)
+ (inline_tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc
+  -open
+  Lunarpc_quickcheck
+  -open
+  Lunarpc_stdlib)
+ (libraries keyval keyval_rpc lunarpc lunarpc_quickcheck lunarpc_stdlib)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__get.md.gen)
+ (deps test__get.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__get.md test__get.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__get_v1.md.gen)
+ (deps test__get_v1.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__get_v1.md test__get_v1.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__set_.md.gen)
+ (deps test__set_.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__set_.md test__set_.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__delete.md.gen)
+ (deps test__delete.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__delete.md test__delete.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__list_keys.md.gen)
+ (deps test__list_keys.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__list_keys.md test__list_keys.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__fail.md.gen)
+ (deps test__fail.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__fail.md test__fail.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__get_owner.md.gen)
+ (deps test__get_owner.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__get_owner.md test__get_owner.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__fail_request.md.gen)
+ (deps test__fail_request.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__fail_request.md test__fail_request.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__fail_response.md.gen)
+ (deps test__fail_response.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__fail_response.md test__fail_response.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__stop.md.gen)
+ (deps test__stop.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__stop.md test__stop.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__list_rpcs.md.gen)
+ (deps test__list_rpcs.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__list_rpcs.md test__list_rpcs.md.gen)))

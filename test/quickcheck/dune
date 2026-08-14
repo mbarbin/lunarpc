@@ -1,0 +1,68 @@
+(library
+ (name lunarpc_quickcheck_test)
+ (package lunarpc-tests)
+ (inline_tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc
+  -open
+  Lunarpc_quickcheck
+  -open
+  Lunarpc_stdlib)
+ (libraries base jsonschema lunarpc lunarpc_quickcheck lunarpc_stdlib)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__json_validation.md.gen)
+ (deps test__json_validation.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__json_validation.md test__json_validation.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__generator.md.gen)
+ (deps test__generator.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__generator.md test__generator.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__rpc_quickcheck.md.gen)
+ (deps test__rpc_quickcheck.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__rpc_quickcheck.md test__rpc_quickcheck.md.gen)))
