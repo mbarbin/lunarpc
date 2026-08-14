@@ -70,7 +70,7 @@ let%expect_test "invalid" =
   test "abc123";
   [%expect {| Ok abc123 |}];
   test "";
-  [%expect {| Error: "": invalid test.My_id |}];
+  [%expect {| Error: "": invalid Test.My_id |}];
   (* 256 characters, mostly alphanumeric but with a space every 7th
      character --- long enough, and invalid enough, to exercise the
      truncation of the shown value in the error message. *)
@@ -80,6 +80,6 @@ let%expect_test "invalid" =
   in
   test long_invalid;
   [%expect
-    {| Error: " bcdefg ijklmn pqrstu wxyzab defghi klmn... (256 characters total)": invalid test.My_id |}];
+    {| Error: " bcdefg ijklmn pqrstu wxyzab defghi klmn... (256 characters total)": invalid Test.My_id |}];
   ()
 ;;

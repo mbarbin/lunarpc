@@ -31,20 +31,20 @@ let%expect_test "invalid" =
   [%expect {| Ok my-app_42 |}];
   (* Empty. *)
   test "";
-  [%expect {| Error: "": invalid rpc_discovery.App_name |}];
+  [%expect {| Error: "": invalid Rpc_discovery.App_name |}];
   (* Path separator and extension dot are explicitly disallowed. *)
   test "cr/app";
-  [%expect {| Error: "cr/app": invalid rpc_discovery.App_name |}];
+  [%expect {| Error: "cr/app": invalid Rpc_discovery.App_name |}];
   test "cr.app";
-  [%expect {| Error: "cr.app": invalid rpc_discovery.App_name |}];
+  [%expect {| Error: "cr.app": invalid Rpc_discovery.App_name |}];
   test "cr app";
-  [%expect {| Error: "cr app": invalid rpc_discovery.App_name |}];
+  [%expect {| Error: "cr app": invalid Rpc_discovery.App_name |}];
   (* Exactly the length limit is fine; one over is not. *)
   test (String.make 64 'a');
   [%expect {| Ok aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |}];
   test (String.make 65 'a');
   [%expect
-    {| Error: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (65 characters total)": invalid rpc_discovery.App_name |}];
+    {| Error: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (65 characters total)": invalid Rpc_discovery.App_name |}];
   ()
 ;;
 
@@ -58,6 +58,6 @@ let%expect_test "invalid" =
 
 let%expect_test "v raises on an invalid app_name" =
   require_does_raise (fun () -> Rpc_discovery.App_name.v "cr/app");
-  [%expect {| (Invalid_argument "\"cr/app\": invalid rpc_discovery.App_name") |}];
+  [%expect {| (Invalid_argument "\"cr/app\": invalid Rpc_discovery.App_name") |}];
   ()
 ;;

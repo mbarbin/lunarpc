@@ -22,16 +22,16 @@ let%expect_test "invalid" =
   test "rpc";
   [%expect {| Ok rpc |}];
   test "";
-  [%expect {| Error: "": invalid rpc_discovery.Service_name |}];
+  [%expect {| Error: "": invalid Rpc_discovery.Service_name |}];
   test "rpc/service";
-  [%expect {| Error: "rpc/service": invalid rpc_discovery.Service_name |}];
+  [%expect {| Error: "rpc/service": invalid Rpc_discovery.Service_name |}];
   test "rpc service";
-  [%expect {| Error: "rpc service": invalid rpc_discovery.Service_name |}];
+  [%expect {| Error: "rpc service": invalid Rpc_discovery.Service_name |}];
   ()
 ;;
 
 let%expect_test "v raises on an invalid service_name" =
   require_does_raise (fun () -> Rpc_discovery.Service_name.v "rpc/service");
-  [%expect {| (Invalid_argument "\"rpc/service\": invalid rpc_discovery.Service_name") |}];
+  [%expect {| (Invalid_argument "\"rpc/service\": invalid Rpc_discovery.Service_name") |}];
   ()
 ;;

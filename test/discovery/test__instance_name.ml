@@ -22,14 +22,14 @@ let%expect_test "invalid" =
   test "server";
   [%expect {| Ok server |}];
   test "";
-  [%expect {| Error: "": invalid rpc_discovery.Instance_name |}];
+  [%expect {| Error: "": invalid Rpc_discovery.Instance_name |}];
   test "server.1";
-  [%expect {| Error: "server.1": invalid rpc_discovery.Instance_name |}];
+  [%expect {| Error: "server.1": invalid Rpc_discovery.Instance_name |}];
   ()
 ;;
 
 let%expect_test "v raises on an invalid instance_name" =
   require_does_raise (fun () -> Rpc_discovery.Instance_name.v "server.1");
-  [%expect {| (Invalid_argument "\"server.1\": invalid rpc_discovery.Instance_name") |}];
+  [%expect {| (Invalid_argument "\"server.1\": invalid Rpc_discovery.Instance_name") |}];
   ()
 ;;
