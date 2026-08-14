@@ -22,7 +22,7 @@ depends: [
   "lunarpc-server" {= version}
   "lunarpc-stdlib" {= version}
   "lunarpc-test-harness" {= version}
-  "mdexp" {>= "0.0.1"}
+  "mdexp" {>= "0.0.20260814"}
   "nofunc-stdhtbl" {>= "0.1.0"}
   "parsexp" {>= "v0.17"}
   "pp" {>= "2.0.0"}
