@@ -1,0 +1,126 @@
+(library
+ (name lunarpc_discovery_test)
+ (package lunarpc-tests)
+ (inline_tests)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc_discovery
+  -open
+  Lunarpc_stdlib)
+ (libraries lunarpc_discovery lunarpc_stdlib unix)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__app_name.md.gen)
+ (deps test__app_name.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__app_name.md test__app_name.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__service_name.md.gen)
+ (deps test__service_name.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__service_name.md test__service_name.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__instance_name.md.gen)
+ (deps test__instance_name.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__instance_name.md test__instance_name.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__service_id.md.gen)
+ (deps test__service_id.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__service_id.md test__service_id.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__discovery_file.md.gen)
+ (deps test__discovery_file.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__discovery_file.md test__discovery_file.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__rpc_discovery.md.gen)
+ (deps test__rpc_discovery.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__rpc_discovery.md test__rpc_discovery.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__via_file.md.gen)
+ (deps test__via_file.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__via_file.md test__via_file.md.gen)))

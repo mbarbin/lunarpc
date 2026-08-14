@@ -4,14 +4,6 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t = Yojson.Basic.t
-
-val equal : t -> t -> bool
-val to_dyn : t -> Dyn.t
-
-(** Pretty-print [t] as standards-compliant JSON. *)
-val pretty_to_string : t -> string
-
-(** An exception raised by deserializers when they can't parse an input
-    according to its expected structure. *)
-exception Invalid_json of t * string
+val app_name : Rpc_discovery.App_name.t
+val service_name : Rpc_discovery.Service_name.t
+val service_id : Rpc_discovery.Service_id.t

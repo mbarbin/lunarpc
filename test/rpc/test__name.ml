@@ -29,25 +29,25 @@ let%expect_test "invalid" =
   [%expect {| Ok ping |}];
   (* Leading uppercase. *)
   test "Ping";
-  [%expect {| Error: "Ping": invalid rpc.Name |}];
+  [%expect {| Error: "Ping": invalid Rpc.Name |}];
   (* Underscore is not alphanumeric. *)
   test "list_rpcs";
-  [%expect {| Error: "list_rpcs": invalid rpc.Name |}];
+  [%expect {| Error: "list_rpcs": invalid Rpc.Name |}];
   (* Empty. *)
   test "";
-  [%expect {| Error: "": invalid rpc.Name |}];
+  [%expect {| Error: "": invalid Rpc.Name |}];
   (* Leading digit. *)
   test "1abc";
-  [%expect {| Error: "1abc": invalid rpc.Name |}];
+  [%expect {| Error: "1abc": invalid Rpc.Name |}];
   (* Whitespace. *)
   test "list rpcs";
-  [%expect {| Error: "list rpcs": invalid rpc.Name |}];
+  [%expect {| Error: "list rpcs": invalid Rpc.Name |}];
   (* Exactly the length limit is fine; one over is not. *)
   test (String.make 64 'a');
   [%expect {| Ok aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |}];
   test (String.make 65 'a');
   [%expect
-    {| Error: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (65 characters total)": invalid rpc.Name |}];
+    {| Error: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa... (65 characters total)": invalid Rpc.Name |}];
   ()
 ;;
 
@@ -62,6 +62,6 @@ let%expect_test "invalid" =
 
 let%expect_test "v raises on an invalid name" =
   require_does_raise (fun () -> Rpc.Name.v "Ping");
-  [%expect {| (Invalid_argument "\"Ping\": invalid rpc.Name") |}];
+  [%expect {| (Invalid_argument "\"Ping\": invalid Rpc.Name") |}];
   ()
 ;;

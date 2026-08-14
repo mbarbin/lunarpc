@@ -4,14 +4,13 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t = Yojson.Basic.t
+(** @canonical Lunarpc_discovery.Rpc_discovery.Service_id.t *)
+type t = private
+  { app_name : App_name.t
+  ; service_name : Service_name.t
+  }
 
+val compare : t -> t -> Ordering.t
 val equal : t -> t -> bool
+val create : app_name:App_name.t -> service_name:Service_name.t -> t
 val to_dyn : t -> Dyn.t
-
-(** Pretty-print [t] as standards-compliant JSON. *)
-val pretty_to_string : t -> string
-
-(** An exception raised by deserializers when they can't parse an input
-    according to its expected structure. *)
-exception Invalid_json of t * string

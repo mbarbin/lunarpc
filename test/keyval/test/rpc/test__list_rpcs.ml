@@ -117,7 +117,7 @@ let%expect_test "invalid request" =
   [%expect {| (Json.Invalid_json "Expected string in names array" "[ 1 ]") |}];
   test (`Assoc [ "names", `List [ `String "Not valid!" ] ]);
   [%expect
-    {| (Json.Invalid_json "\"Not valid!\": invalid rpc.Name" "[ \"Not valid!\" ]") |}];
+    {| (Json.Invalid_json "\"Not valid!\": invalid Rpc.Name" "[ \"Not valid!\" ]") |}];
   ()
 ;;
 
@@ -145,7 +145,7 @@ let%expect_test "invalid response" =
                   ]
               ] )
         ]);
-  [%expect {| (Json.Invalid_json "\"Not valid!\": invalid rpc.Name" "\"Not valid!\"") |}];
+  [%expect {| (Json.Invalid_json "\"Not valid!\": invalid Rpc.Name" "\"Not valid!\"") |}];
   ()
 ;;
 

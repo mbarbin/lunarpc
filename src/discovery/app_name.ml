@@ -4,20 +4,17 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
-include Stdlib.ListLabels
+let max_length = 64
 
-let filter_opt t = filter_map ~f:Fun.id t
-let map t ~f = map ~f t
-
-let dedup_and_sort t ~compare =
-  let sorted = Stdlib.ListLabels.sort ~cmp:compare t in
-  let rec dedup acc = function
-    | [] -> rev acc
-    | [ x ] -> rev (x :: acc)
-    | x :: (y :: _ as rest) ->
-      if compare x y = 0 then dedup acc rest else dedup (x :: acc) rest
-  in
-  dedup [] sorted
+let invariant s =
+  let len = String.length s in
+  len >= 1
+  && len <= max_length
+  && String.for_all s ~f:(fun c ->
+    Char.is_alphanum c || Char.equal c '-' || Char.equal c '_')
 ;;
 
-let hd_exn = Stdlib.List.hd
+include String_id.Make (struct
+    let module_name = "Rpc_discovery.App_name"
+    let invariant = invariant
+  end)
