@@ -54,7 +54,7 @@ jobs:
       - name: Environment setup
         run: |
           echo "DUNE_WORKSPACE=$PWD/dune-workspace.${{ matrix.ocaml-version }}" >> "$GITHUB_ENV"
-          echo "PACKAGES=lunarpc,lunarpc-client,lunarpc-discovery,lunarpc-quickcheck,lunarpc-server,lunarpc-stdlib,lunarpc-test-harness,lunarpc-tests" >> "$GITHUB_ENV"
+          echo "PACKAGES=lunarpc,lunarpc-client,lunarpc-discovery,lunarpc-generator,lunarpc-quickcheck,lunarpc-server,lunarpc-stdlib,lunarpc-test-harness,lunarpc-tests" >> "$GITHUB_ENV"
 
       - name: Setup Dune
         uses: mbarbin/setup-dune@03ede0220d3fe665f250727d8e21b7c0f9517f3b # v2.0.0+patch-7
