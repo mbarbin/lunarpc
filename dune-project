@@ -148,6 +148,10 @@
    (>= 0.0.11))
   (cmdlang-cmdliner-err-runner
    (>= 0.0.17))
+  (cmdliner
+   (and
+    (>= 1.3.0)
+    (< 2.0)))
   (dune-build-info
    (>= 3.20))
   (jsonschema
@@ -200,6 +204,10 @@
    (= 0.29.0))
   (bisect_ppx
    (>= 2.8.3))
+  (cmdliner
+   (and
+    (>= 1.3.0)
+    (< 2.0)))
   (lunarpc
    (= :version))
   (lunarpc-client
