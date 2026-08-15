@@ -13,7 +13,7 @@
   Lunarpc_generator
   -open
   Lunarpc_stdlib)
- (libraries base jsonschema lunarpc lunarpc_generator lunarpc_stdlib yojson)
+ (libraries jsonschema lunarpc lunarpc_generator lunarpc_stdlib yojson)
  (instrumentation
   (backend bisect_ppx))
  (lint

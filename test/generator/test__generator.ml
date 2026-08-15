@@ -15,7 +15,8 @@
    [Range.t], a [{ lo; hi }] pair that is an interval by construction:
    [hi] is [lo] plus a non-negative offset, so [lo <= hi] should always
    hold, however [Range.t] values are generated.
-   [Test.run] then checks that invariant against many random samples. *)
+   [Generator.Test.run] then checks that invariant against many random
+   samples. *)
 
 module Range = struct
   type t =
@@ -39,7 +40,7 @@ module Range = struct
 end
 
 let%expect_test "invariant: lo <= hi" =
-  Test.run (module Range) ~f:(fun { Range.lo; hi } -> require (lo <= hi));
+  Generator.Test.run (module Range) ~f:(fun { Range.lo; hi } -> require (lo <= hi));
   [%expect {||}];
   ()
 ;;

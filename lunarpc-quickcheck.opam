@@ -10,7 +10,6 @@ bug-reports: "https://github.com/mbarbin/lunarpc/issues"
 depends: [
   "dune" {>= "3.20"}
   "ocaml" {>= "5.2"}
-  "base" {>= "v0.17"}
   "jsonschema" {>= "0.1.0"}
   "lunarpc" {= version}
   "lunarpc-generator" {= version}

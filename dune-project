@@ -117,7 +117,8 @@
 
 (package
  (name lunarpc-generator)
- (synopsis "A minimal property-based testing generator library for lunarpc")
+ (synopsis
+  "A minimal property-based testing generator interface for lunarpc")
  (depends
   (ocaml
    (>= 5.2))
@@ -136,8 +137,6 @@
  (depends
   (ocaml
    (>= 5.2))
-  (base
-   (>= v0.17))
   (jsonschema
    (>= 0.1.0))
   (lunarpc
