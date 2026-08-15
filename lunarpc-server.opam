@@ -9,7 +9,7 @@ doc: "https://mbarbin.github.io/lunarpc/"
 bug-reports: "https://github.com/mbarbin/lunarpc/issues"
 depends: [
   "dune" {>= "3.20"}
-  "ocaml" {>= "5.2"}
+  "ocaml" {>= "5.3"}
   "lunarpc" {= version}
   "lunarpc-stdlib" {= version}
   "nofunc-stdset" {>= "0.1.0"}

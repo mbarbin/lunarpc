@@ -22,7 +22,7 @@
  (synopsis "Extending OCaml's Stdlib for the lunarpc project")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (dyn
    (>= 3.20))
   (fpath-sexp0
@@ -43,7 +43,7 @@
  (synopsis "Core RPC protocol/specification library for lunarpc")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (lunarpc-stdlib
    (= :version))))
 
@@ -52,7 +52,7 @@
  (synopsis "A library to build lunarpc HTTP/JSON clients")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (curl
    (>= 0.9.2))
   (ezcurl
@@ -71,7 +71,7 @@
  (synopsis "A library to help discover lunarpc servers running on localhost")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (cmdlang
    (>= 0.0.11))
   (loc
@@ -88,7 +88,7 @@
  (synopsis "A library to build lunarpc HTTP/JSON servers")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (lunarpc
    (= :version))
   (lunarpc-stdlib
@@ -105,7 +105,7 @@
  (synopsis "A library to help writing tests for lunarpc applications")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (lunarpc-client
    (= :version))
   (lunarpc-discovery
@@ -121,7 +121,7 @@
   "A minimal property-based testing generator interface for lunarpc")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (base
    (>= v0.17))
   (base_quickcheck
@@ -136,7 +136,7 @@
  (synopsis "Property-based testing helpers for lunarpc interfaces")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (jsonschema
    (>= 0.1.0))
   (lunarpc
@@ -153,7 +153,7 @@
  (synopsis "Tests and end-to-end examples for lunarpc")
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (base
    (>= v0.17))
   (cmdlang
@@ -213,7 +213,7 @@
  (allow_empty)
  (depends
   (ocaml
-   (>= 5.2))
+   (>= 5.3))
   (ocamlformat
    (= 0.29.0))
   (bisect_ppx
