@@ -229,10 +229,4 @@
   (ppx_expect
    (>= v0.17))
   (ppx_js_style
-   (>= v0.17))
-  (ppxlib
-   (>= 0.33))
-  (odoc
-   (>= 2.4.4))
-  (sherlodoc
-   (>= 0.2))))
+   (>= v0.17))))
