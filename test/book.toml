@@ -1,0 +1,19 @@
+[book]
+title = "Lunarpc Test Suite"
+authors = ["Mathieu Barbin"]
+language = "en"
+src = "."
+
+[build]
+build-dir = "../doc/static/book/test-suite"
+
+[output.html]
+git-repository-url = "https://github.com/mbarbin/lunarpc"
+default-theme = "light"
+preferred-dark-theme = "navy"
+theme = "../doc/book/shared-theme"
+additional-js = ["../doc/book/shared-theme/ansi-plugin.js"]
+
+[output.html.fold]
+enable = true
+level = 1
