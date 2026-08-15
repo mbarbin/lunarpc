@@ -57,7 +57,6 @@
 # Quickcheck
 
 - [JSON schema validation](quickcheck/test__json_validation.md)
-- [Building an RPC spec](rpc/test__rpc.md)
 - [Checking an invariant on a custom generator](generator/test__generator.md)
 - [Rpc_quickcheck catches a broken roundtrip](quickcheck/test__rpc_quickcheck.md)
 
