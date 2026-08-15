@@ -3,3 +3,8 @@
 (*_  SPDX-FileCopyrightText: 2024-2026 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
+
+type t
+
+val create : unit -> t
+val handlers : t -> Rpc.Handler.t list

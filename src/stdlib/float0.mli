@@ -4,4 +4,5 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
+val ( > ) : float -> float -> bool
 val ( >= ) : float -> float -> bool

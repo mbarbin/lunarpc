@@ -4,4 +4,5 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
+let ( > ) (a : float) (b : float) = a > b
 let ( >= ) (a : float) (b : float) = a >= b
