@@ -4,15 +4,10 @@
 (*  SPDX-License-Identifier: MIT                                                 *)
 (*********************************************************************************)
 
-let main =
-  Command.group
-    ~summary:"Keyval is a key=value in-memory store served over gRPCs."
-    [ "delete", Cmd__delete.main
-    ; "get", Cmd__get.main
-    ; "get-owner", Cmd__get_owner.main
-    ; "list-keys", Cmd__list_keys.main
-    ; "set", Cmd__set.main
-    ; "server", Cmd__server.main
-    ; "validate-key", Cmd__validate_key.main
-    ]
+let version =
+  match Build_info.V1.version () with
+  | None -> "n/a"
+  | Some v -> Build_info.V1.Version.to_string v [@coverage off]
 ;;
+
+let () = Cmdlang_cmdliner_err_runner.run Keyval_cli.main ~name:"keyval" ~version

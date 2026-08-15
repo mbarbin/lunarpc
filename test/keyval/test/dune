@@ -1,6 +1,8 @@
 (library
  (name keyval_functional_test)
  (package lunarpc-tests)
+ (inline_tests
+  (deps keyval.exe))
  (flags
   :standard
   -w
@@ -30,3 +32,216 @@
   (pps ppx_js_style -allow-let-operators -check-doc-comments))
  (preprocess
   (pps ppx_expect)))
+
+(rule
+ (copy ../src/bin/main.exe keyval.exe))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__cli.md.gen)
+ (deps test__cli.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__cli.md test__cli.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__validate_key.md.gen)
+ (deps test__validate_key.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__validate_key.md test__validate_key.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__args_groups.md.gen)
+ (deps test__args_groups.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__args_groups.md test__args_groups.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__connection.md.gen)
+ (deps test__connection.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__connection.md test__connection.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__tcp.md.gen)
+ (deps test__tcp.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__tcp.md test__tcp.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__multiple_servers.md.gen)
+ (deps test__multiple_servers.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__multiple_servers.md test__multiple_servers.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__server_restart.md.gen)
+ (deps test__server_restart.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__server_restart.md test__server_restart.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__list_rpcs.md.gen)
+ (deps test__list_rpcs.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__list_rpcs.md test__list_rpcs.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__did_you_mean.md.gen)
+ (deps test__did_you_mean.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__did_you_mean.md test__did_you_mean.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__invalid_rpc.md.gen)
+ (deps test__invalid_rpc.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__invalid_rpc.md test__invalid_rpc.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__ownership.md.gen)
+ (deps test__ownership.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__ownership.md test__ownership.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__stop.md.gen)
+ (deps test__stop.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__stop.md test__stop.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__get_versions.md.gen)
+ (deps test__get_versions.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__get_versions.md test__get_versions.md.gen)))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__client_errors.md.gen)
+ (deps test__client_errors.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__client_errors.md test__client_errors.md.gen)))

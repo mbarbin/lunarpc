@@ -4,7 +4,7 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t
+val config : Rpc_test_harness.Config.t
 
-val create : unit -> t
-val handlers : t -> Rpc.Handler.t list
+(** Same as [config], but runs the server with [--verbose]. *)
+val config_verbose : Rpc_test_harness.Config.t

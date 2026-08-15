@@ -4,7 +4,4 @@
 (*_  SPDX-License-Identifier: MIT                                                 *)
 (*_********************************************************************************)
 
-type t
-
-val create : unit -> t
-val handlers : t -> Rpc.Handler.t list
+(*_ This interface is deliberatly empty. *)
