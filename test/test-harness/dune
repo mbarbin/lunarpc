@@ -1,0 +1,47 @@
+(library
+ (name lunarpc_test_harness_test)
+ (package lunarpc-tests)
+ (inline_tests
+  (deps keyval.exe))
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Lunarpc_test_harness
+  -open
+  Lunarpc_discovery
+  -open
+  Lunarpc_stdlib)
+ (libraries
+  keyval_rpc
+  lunarpc_discovery
+  lunarpc_stdlib
+  lunarpc_test_harness
+  unix)
+ (instrumentation
+  (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
+ (preprocess
+  (pps ppx_expect)))
+
+(rule
+ (copy ../keyval/src/bin/main.exe keyval.exe))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (target test__rpc_test_harness.md.gen)
+ (deps test__rpc_test_harness.ml)
+ (action
+  (with-stdout-to
+   %{target}
+   (run mdexp pp %{deps}))))
+
+(rule
+ (enabled_if %{bin-available:mdexp})
+ (alias runtest)
+ (action
+  (diff test__rpc_test_harness.md test__rpc_test_harness.md.gen)))
