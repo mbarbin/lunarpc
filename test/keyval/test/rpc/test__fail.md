@@ -2,7 +2,7 @@
 
 Same roundtrip check as for [Get](test__get.md), applied to the `Fail`
 RPC. Both its request and response are `Unit`, so this only checks the
-JSON encoding --- see [Malformed requests](../../test__invalid_rpc.md)
+JSON encoding --- see [Malformed requests](../test__invalid_rpc.md)
 for what actually happens when this RPC's handler raises.
 
 ## Invalid json
