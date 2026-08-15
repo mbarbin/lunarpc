@@ -128,7 +128,3 @@ let run_exn ?requests ?responses t =
   run_validate_response_exn ?examples:responses t;
   ()
 ;;
-
-module Private = struct
-  let test_run = Test.run
-end

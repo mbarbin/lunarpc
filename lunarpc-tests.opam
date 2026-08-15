@@ -19,6 +19,7 @@ depends: [
   "lunarpc" {= version}
   "lunarpc-client" {= version}
   "lunarpc-discovery" {= version}
+  "lunarpc-generator" {= version}
   "lunarpc-quickcheck" {= version}
   "lunarpc-server" {= version}
   "lunarpc-stdlib" {= version}

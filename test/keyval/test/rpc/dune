@@ -11,10 +11,18 @@
   -open
   Lunarpc
   -open
+  Lunarpc_generator
+  -open
   Lunarpc_quickcheck
   -open
   Lunarpc_stdlib)
- (libraries keyval keyval_rpc lunarpc lunarpc_quickcheck lunarpc_stdlib)
+ (libraries
+  keyval
+  keyval_rpc
+  lunarpc
+  lunarpc_generator
+  lunarpc_quickcheck
+  lunarpc_stdlib)
  (instrumentation
   (backend bisect_ppx))
  (lint

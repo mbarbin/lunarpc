@@ -1,6 +1,6 @@
 (library
- (name lunarpc_quickcheck)
- (public_name lunarpc-quickcheck)
+ (name lunarpc_generator)
+ (public_name lunarpc-generator)
  (flags
   :standard
   -w
@@ -8,12 +8,8 @@
   -warn-error
   +a
   -open
-  Lunarpc
-  -open
-  Lunarpc_generator
-  -open
   Lunarpc_stdlib)
- (libraries base jsonschema lunarpc lunarpc_generator lunarpc_stdlib yojson)
+ (libraries base base_quickcheck lunarpc_stdlib sexplib0)
  (instrumentation
   (backend bisect_ppx))
  (lint
