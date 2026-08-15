@@ -10,10 +10,8 @@
   -open
   Lunarpc
   -open
-  Lunarpc_stdlib
-  -open
-  Nofunc_stdset)
- (libraries lunarpc lunarpc_stdlib nofunc-stdset tiny_httpd yojson)
+  Lunarpc_stdlib)
+ (libraries lunarpc lunarpc_stdlib tiny_httpd yojson)
  (instrumentation
   (backend bisect_ppx))
  (lint
