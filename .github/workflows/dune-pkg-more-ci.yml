@@ -28,7 +28,6 @@ jobs:
           - "5.5"
           - "5.4"
           - "5.3"
-          - "5.2"
         include:
           - os: ubuntu-latest
             dune-version: "3.24.2"
