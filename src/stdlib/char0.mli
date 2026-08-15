@@ -7,3 +7,4 @@
 include module type of Stdlib.Char
 
 val is_alphanum : char -> bool
+val is_whitespace : char -> bool
