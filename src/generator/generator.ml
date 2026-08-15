@@ -30,6 +30,33 @@ module Syntax = struct
   let ( and* ) = both
 end
 
-module Private = struct
-  let to_base_quickcheck t = t
+module Test = struct
+  module type S = sig
+    type 'a generator := 'a t
+    type t
+
+    val generator : t generator
+    val to_dyn : t -> Dyn.t
+  end
+
+  let run (type a) ?examples (module M : S with type t = a) ~f =
+    let module M = struct
+      type t = a
+
+      let quickcheck_generator = M.generator
+      let quickcheck_shrinker = Base_quickcheck.Shrinker.atomic
+      let sexp_of_t t = Dyn.to_sexp (M.to_dyn t)
+    end
+    in
+    match
+      Base_quickcheck.Test.run
+        ?examples
+        (module M)
+        ~f:(fun a ->
+          f a;
+          Ok ())
+    with
+    | Ok () -> ()
+    | Error err -> Base.Error.raise err
+  ;;
 end

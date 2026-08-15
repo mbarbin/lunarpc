@@ -116,8 +116,9 @@
    (>= 0.1.0))))
 
 (package
- (name lunarpc-quickcheck)
- (synopsis "Property-based testing helpers for lunarpc interfaces")
+ (name lunarpc-generator)
+ (synopsis
+  "A minimal property-based testing generator interface for lunarpc")
  (depends
   (ocaml
    (>= 5.2))
@@ -125,14 +126,25 @@
    (>= v0.17))
   (base_quickcheck
    (>= v0.17))
+  (lunarpc-stdlib
+   (= :version))
+  (sexplib0
+   (>= v0.17))))
+
+(package
+ (name lunarpc-quickcheck)
+ (synopsis "Property-based testing helpers for lunarpc interfaces")
+ (depends
+  (ocaml
+   (>= 5.2))
   (jsonschema
    (>= 0.1.0))
   (lunarpc
    (= :version))
+  (lunarpc-generator
+   (= :version))
   (lunarpc-stdlib
    (= :version))
-  (sexplib0
-   (>= v0.17))
   (yojson
    (>= 3.0.0))))
 
@@ -161,6 +173,8 @@
   (lunarpc-client
    (= :version))
   (lunarpc-discovery
+   (= :version))
+  (lunarpc-generator
    (= :version))
   (lunarpc-quickcheck
    (= :version))
@@ -213,6 +227,8 @@
   (lunarpc-client
    (= :version))
   (lunarpc-discovery
+   (= :version))
+  (lunarpc-generator
    (= :version))
   (lunarpc-quickcheck
    (= :version))

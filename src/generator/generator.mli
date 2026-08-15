@@ -7,7 +7,7 @@
 (** A generator of random values of type ['a].
 
     [Generator] is a thin abstraction layer over the underlying quickcheck
-    backend ([Base_quickcheck]). It lives in the [lunarpc-quickcheck] library,
+    backend ([Base_quickcheck]). It lives in the [lunarpc-generator] library,
     used from test code only, so that the production libraries (e.g.
     [lunarpc-stdlib]) never pull in [base]/[base_quickcheck]; generators for a
     given type are defined where they are used, alongside the tests. *)
@@ -72,10 +72,23 @@ module Syntax : sig
   val ( and* ) : 'a t -> 'b t -> ('a * 'b) t
 end
 
-(**/**)
+(** {1 Running property-based tests} *)
 
-(** Internal access to the backing implementation, exposed for the companion
-    test runner only. Do not use elsewhere. *)
-module Private : sig
-  val to_base_quickcheck : 'a t -> 'a Base_quickcheck.Generator.t
+module Test : sig
+  module type S = sig
+    type 'a generator := 'a t
+    type t
+
+    val generator : t generator
+    val to_dyn : t -> Dyn.t
+  end
+
+  (** [run (module M) ~f] runs [f] on a sequence of randomly generated values
+      of type [M.t]. If [f] raises on any input the exception is propagated;
+      the offending value can be inspected through [M.to_dyn] when the test
+      runner reports the failure.
+
+      [examples] is an optional list of inputs to test first, before the
+      random inputs. *)
+  val run : ?examples:'a list -> (module S with type t = 'a) -> f:('a -> unit) -> unit
 end

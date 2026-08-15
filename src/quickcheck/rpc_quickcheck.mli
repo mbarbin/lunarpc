@@ -45,17 +45,3 @@ val run_validate_response_exn
   :  ?examples:'response list
   -> ('request, 'response) t
   -> unit
-
-(**/**)
-
-(** Internal access to the generic property-based test runner backing this
-    module, exposed for [lunarpc-quickcheck]'s own test suite only (to check
-    an invariant on a custom generator that isn't an RPC request/response
-    pair). Do not use elsewhere. *)
-module Private : sig
-  val test_run
-    :  ?examples:'a list
-    -> (module Test.S with type t = 'a)
-    -> f:('a -> unit)
-    -> unit
-end

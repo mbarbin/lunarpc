@@ -55,7 +55,7 @@ let run_validate_request_exn (type request response) ?examples (t : (request, re
   end
   in
   let json_validator = json_validator_exn M.rpc.request_encoder in
-  Test.run
+  Generator.Test.run
     (module Request)
     ?examples
     ~f:(fun request ->
@@ -72,7 +72,7 @@ let run_request_exn (type request response) ?examples (t : (request, response) t
     let to_dyn t = Json.to_dyn (M.rpc.request_encoder.to_json t)
   end
   in
-  Test.run
+  Generator.Test.run
     (module Request)
     ?examples
     ~f:(fun request ->
@@ -95,7 +95,7 @@ let run_validate_response_exn
   end
   in
   let json_validator = json_validator_exn M.rpc.response_encoder in
-  Test.run
+  Generator.Test.run
     (module Response)
     ?examples
     ~f:(fun response ->
@@ -112,7 +112,7 @@ let run_response_exn (type request response) ?examples (t : (request, response) 
     let to_dyn t = Json.to_dyn (M.rpc.response_encoder.to_json t)
   end
   in
-  Test.run
+  Generator.Test.run
     (module Response)
     ?examples
     ~f:(fun response ->
@@ -128,7 +128,3 @@ let run_exn ?requests ?responses t =
   run_validate_response_exn ?examples:responses t;
   ()
 ;;
-
-module Private = struct
-  let test_run = Test.run
-end

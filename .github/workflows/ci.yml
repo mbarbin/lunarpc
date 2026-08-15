@@ -52,7 +52,7 @@ jobs:
           BISECT_FILE: ${{ runner.temp }}/_bisect_ppx_data/data
 
       - name: Lint
-        run: dune build @lint @fmt
+        run: dune build @lint @fmt @unused-libs
 
       - name: Build Doc
         run: dune build @doc
