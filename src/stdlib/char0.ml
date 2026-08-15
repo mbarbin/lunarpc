@@ -44,3 +44,9 @@ let is_alphanum = function
   | '0' .. '9' | 'a' .. 'z' | 'A' .. 'Z' -> true
   | _ -> false
 ;;
+
+(* [is_whitespace] is copied from [Base] (MIT). *)
+let is_whitespace = function
+  | '\t' | '\n' | '\011' (* vertical tab *) | '\012' (* form feed *) | '\r' | ' ' -> true
+  | _ -> false
+;;

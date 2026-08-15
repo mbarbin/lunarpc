@@ -13,6 +13,7 @@ module Code_error = Code_error0
 module Dyn = Dyn0
 module Err = Err0
 module Exn = Exn0
+module Float = Float0
 module Fpath = Fpath0
 module Fun = Fun0
 module Fsegment = Fsegment0
