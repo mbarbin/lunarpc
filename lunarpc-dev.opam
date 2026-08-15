@@ -24,7 +24,7 @@ depends: [
   "mdexp" {>= "0.0.20260814"}
   "ppx_expect" {>= "v0.17"}
   "ppx_js_style" {>= "v0.17"}
-  "odoc" {with-doc}
+  "odoc" {>= "3.0.0"}
 ]
 build: [
   ["dune" "subst"] {dev}
