@@ -8,6 +8,7 @@ include Stdlib.ListLabels
 
 let filter_opt t = filter_map ~f:Fun.id t
 let map t ~f = map ~f t
+let sort t ~compare = Stdlib.ListLabels.sort ~cmp:compare t
 
 let dedup_and_sort t ~compare =
   let sorted = Stdlib.ListLabels.sort ~cmp:compare t in

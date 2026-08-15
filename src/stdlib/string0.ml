@@ -51,6 +51,14 @@ let lsplit2 t ~on =
   | Some i -> Some (sub t ~pos:0 ~len:i, sub t ~pos:(i + 1) ~len:(length t - i - 1))
 ;;
 
+let rsplit2 t ~on =
+  match rindex_opt t on with
+  | None -> None
+  | Some i -> Some (sub t ~pos:0 ~len:i, sub t ~pos:(i + 1) ~len:(length t - i - 1))
+;;
+
+let to_string t = t
+
 (* ---------------------------------------------------------------------------- *)
 (* The following functions are copied from [Base] (MIT). See notice at the top
    of the file and project global notice for licensing information. *)

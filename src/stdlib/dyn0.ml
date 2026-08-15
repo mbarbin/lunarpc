@@ -8,6 +8,8 @@ module List = List0
 module Sexp = Sexplib0.Sexp
 include Dyn
 
+let set a_to_dyn li = Dyn.Set (List.map li ~f:a_to_dyn)
+
 let to_sexp =
   let module S = Sexplib0.Sexp_conv in
   let rec aux (dyn : Dyn.t) : Sexp.t =

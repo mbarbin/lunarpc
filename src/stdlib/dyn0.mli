@@ -13,6 +13,13 @@ include module type of struct
   include Dyn
 end
 
+(** {1 Builder}
+
+    This extends the existing interface to build dyn values with helpers that
+    we've found convenient while working with this abstraction. *)
+
+val set : ('a -> Dyn.t) -> 'a list -> Dyn.t
+
 (** {1 Alternate syntax} *)
 
 val to_sexp : Dyn.t -> Sexplib0.Sexp.t
